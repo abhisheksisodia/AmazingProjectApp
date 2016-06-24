@@ -1,10 +1,13 @@
-﻿using Android.App;
+﻿using System;
+using System.Threading.Tasks;
+using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Widget;
 using Bootcamp2016.AmazingRace.Services;
 using Caliburn.Micro;
+using Microsoft.WindowsAzure.MobileServices;
 using Xamarin.Forms.Platform.Android;
 
 namespace Bootcamp2016.AmazingRace.Droid
@@ -18,8 +21,12 @@ namespace Bootcamp2016.AmazingRace.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.FormsMaps.Init(this, bundle);
-            LoadApplication(new App(IoC.Get<SimpleContainer>()));
-        }
 
+            //IPlatformAuthenticator
+
+            var container = IoC.Get<SimpleContainer>();
+            container.Singleton<IPlatformAuthenticator,PlatformAuthenticator>();
+            LoadApplication(new App(container));
+        }
     }
 }

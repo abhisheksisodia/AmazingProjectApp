@@ -2,8 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Bootcamp2016.AmazingRace.Views.LoginView">
-      <Button Text="Login"
-            HorizontalOptions="Center"
-            VerticalOptions="CenterAndExpand"
-            Command="{Binding LoginCommand}"/>
+  <StackLayout Orientation="Vertical">
+    <Button Text="Login"
+          HorizontalOptions="Center"
+          VerticalOptions="CenterAndExpand"
+          Command="{Binding LoginCommand}"/>
+    <Label Text="Failed to authenticate." IsVisible="{Binding IsAuthenticated}" />
+  </StackLayout>
 </ContentPage>

@@ -13,7 +13,7 @@ namespace Bootcamp2016.AmazingRace.ViewModels
 
         protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
         {
-            if (Object.Equals(field,value))
+            if (!Object.Equals(field,value))
             {
                 field = value;
                 NotifyOfPropertyChange(propertyName);

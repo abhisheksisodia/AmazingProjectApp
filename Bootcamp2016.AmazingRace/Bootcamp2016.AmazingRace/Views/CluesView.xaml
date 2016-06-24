@@ -8,8 +8,8 @@
     <ListView.ItemTemplate>
       <DataTemplate>
         <StackLayout Orientation="Horizontal">
-          <TextCell Text="{Binding Points}" />
-          <TextCell Text="{Binding Description}" />
+          <Label Text="{Binding Points}" />
+          <Label Text="{Binding Description}" />
         </StackLayout>
       </DataTemplate>
     </ListView.ItemTemplate>

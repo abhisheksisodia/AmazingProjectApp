@@ -24,8 +24,15 @@ namespace Bootcamp2016.AmazingRace.Services
 
         public async Task<List<Clue>> GetCluesAsync(string raceId)
         {
-            string url = string.Format("race/{0}/clues", raceId);
-            return await _mobileClient.InvokeApiAsync<List<Clue>>(url, HttpMethod.Get, null);
+            try
+            {
+                string url = string.Format("race/{0}/clues", raceId);
+                return await _mobileClient.InvokeApiAsync<List<Clue>>(url, HttpMethod.Get, null);
+            } catch (Exception ex)
+            {
+                var bp = 0;
+                throw;
+            }
         }
 
         public async Task<string> GetNextClueIdAsync(string teamId, string raceId)

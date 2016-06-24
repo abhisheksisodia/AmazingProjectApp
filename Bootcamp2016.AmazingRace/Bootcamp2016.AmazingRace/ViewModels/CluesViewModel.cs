@@ -34,7 +34,8 @@ namespace Bootcamp2016.AmazingRace.ViewModels
         public async void RefreshClues()
         {
             Clues.Clear();
-            foreach (var clue in await _dataService.GetCluesAsync(_settingsService.RaceId))
+            var clues = await _dataService.GetCluesAsync(_settingsService.RaceId);
+            foreach (var clue in clues)
             {
                 Clues.Add(clue);
             }

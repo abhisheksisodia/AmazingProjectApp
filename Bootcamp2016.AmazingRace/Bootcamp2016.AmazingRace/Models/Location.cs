@@ -11,6 +11,8 @@ namespace Bootcamp2016.AmazingRace.Models
     /// </summary>
     public class Location
     {
-
+        public string RaceId { get; set; }
+        public double Longitude { get; set; }
+        public double Lattitude { get; set; }
     }
 }

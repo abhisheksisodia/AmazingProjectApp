@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Bootcamp2016.AmazingRace.Models;
 using Microsoft.WindowsAzure.MobileServices;
+using System.Net.Http;
 
 namespace Bootcamp2016.AmazingRace.Services
 {
@@ -15,62 +16,91 @@ namespace Bootcamp2016.AmazingRace.Services
         {
             _mobileClient = mobileClient;
         }
-        public Task<Clue> GetClueAsync(string clueId)
+        public async Task<Clue> GetClueAsync(string clueId)
+        {
+            string url = string.Format("/clue/{0}", clueId);
+            return await _mobileClient.InvokeApiAsync<Clue>(url, HttpMethod.Get, null);
+        }
+
+        public async Task<List<Clue>> GetCluesAsync(string raceId)
+        {
+            string url = string.Format("/race/{0}/clues", raceId);
+            return await _mobileClient.InvokeApiAsync<List<Clue>>(url, HttpMethod.Get, null);
+        }
+
+        public async Task<string> GetNextClueIdAsync(string teamId, string raceId)
+        {
+            string url = string.Format("race/{0}/team/{1}", teamId, raceId);
+            return await _mobileClient.InvokeApiAsync<string>(url, HttpMethod.Get, null);
+        }
+
+        public async Task<Profile> GetProfileAsync()
+        {
+            return await _mobileClient.InvokeApiAsync<Profile>("profile", HttpMethod.Get, null);
+        }
+
+        public async Task<Race> GetRaceAsync(string id)
+        {
+            string url = string.Format("race/{0}", id);
+            return await _mobileClient.InvokeApiAsync<Race>(url, HttpMethod.Get, null);
+        }
+
+        public async Task<IEnumerable<Race>> GetRacesAsync()
+        {
+            return await _mobileClient.InvokeApiAsync<List<Race>>("race", HttpMethod.Get, null);
+        }
+
+        public async Task<Team> JoinTeamAsync(string teamCode)
+        {
+            var queryDict = new Dictionary<string, string>() { { "joinCode", teamCode } };
+            return await _mobileClient.InvokeApiAsync<Team>("profile", HttpMethod.Post, queryDict);
+        }
+
+        public async Task<bool> PostClueResponse(string clueId, double lat, double lng, byte[] dataArray)
+        {
+            var requestBody = new PostClueRequest()
+            {
+                ClueId = clueId,
+                Latitude = lat,
+                Longitude = lng,
+                Data = dataArray
+            };
+            try
+            {
+                await _mobileClient.InvokeApiAsync<PostClueRequest, PostClueResponse>("clue", requestBody, HttpMethod.Post, null);
+                return true;
+            } catch(Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> PostLocationUpdate(Location location)
+        {
+            try
+            {
+                await _mobileClient.InvokeApiAsync<Location>("updatelocation", HttpMethod.Post, null);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public async Task<string> RegisterForPushNotifications(string regId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<Clue>> GetCluesAsync(string raceId)
+        public async Task<string> SkipClueAsync(string teamId, string raceId, int skip)
         {
-            throw new NotImplementedException();
+            var queryDict = new Dictionary<string, string>() { { "skip", skip.ToString() } };
+            string url = string.Format("race/{0}/team/{1}", teamId, raceId);
+            return await _mobileClient.InvokeApiAsync<string>(url, HttpMethod.Get, queryDict);
         }
 
-        public Task<string> GetNextClueIdAsync(string teamId, string raceId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Profile> GetProfileAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Race> GetRaceAsync(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Race>> GetRacesAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Team> JoinTeamAsync(string teamCode)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> PostClueResponse(string clueId, double lat, double lng, byte[] dataArray)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> PostLocationUpdate(Location location)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<string> RegisterForPushNotifications(string regId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<string> SkipClueAsync(string teamId, string raceId, int skip)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> UpdateDeviceInfoForPushNotifications(string regId, DeviceRegistration device)
+        public async Task<bool> UpdateDeviceInfoForPushNotifications(string regId, DeviceRegistration device)
         {
             throw new NotImplementedException();
         }

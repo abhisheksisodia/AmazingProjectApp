@@ -11,6 +11,8 @@ namespace Bootcamp2016.AmazingRace.Models
     /// </summary>
     public class DeviceRegistration
     {
-
+        public string Platform { get; set; }
+        public string Handle { get; set; }
+        public List<string> Tags { get; set; }
     }
 }

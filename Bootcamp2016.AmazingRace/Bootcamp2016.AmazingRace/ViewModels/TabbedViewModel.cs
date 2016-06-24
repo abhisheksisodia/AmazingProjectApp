@@ -2,11 +2,6 @@
 
 using Bootcamp2016.AmazingRace.TemplateSelectors;
 using Caliburn.Micro;
-<<<<<<< HEAD
-using System;
-using System.Runtime.CompilerServices;
-=======
->>>>>>> 8ae78eae039a3feeaf773d00c36b1ae7bd4a9bb8
 using Xamarin.Forms;
 
 namespace Bootcamp2016.AmazingRace.ViewModels

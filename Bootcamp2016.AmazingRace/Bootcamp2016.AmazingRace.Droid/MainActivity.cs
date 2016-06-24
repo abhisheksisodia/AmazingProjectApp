@@ -12,7 +12,7 @@ using Xamarin.Forms.Platform.Android;
 
 namespace Bootcamp2016.AmazingRace.Droid
 {
-    [Activity(Label = "Bootcamp2016.AmazingRace", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Infusion Amazing Race", Icon = "@drawable/myicon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)

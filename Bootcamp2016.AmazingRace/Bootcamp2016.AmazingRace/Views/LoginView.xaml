@@ -10,6 +10,11 @@
   </ContentPage.Resources>
   <Grid>
       <ActivityIndicator IsRunning="{Binding IsWaiting}" IsEnabled="{Binding IsWaiting}" />
+
+      <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Center">
+        <Image Source="racelogo.png" />
+      </StackLayout>
+    
       <Button Text="Login" MinimumWidthRequest="200"
             HorizontalOptions="Center"
             VerticalOptions="CenterAndExpand"

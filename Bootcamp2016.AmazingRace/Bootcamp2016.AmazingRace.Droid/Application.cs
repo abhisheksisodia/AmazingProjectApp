@@ -41,7 +41,7 @@ namespace Bootcamp2016.AmazingRace.Droid
             return new[]
             {
                 GetType().Assembly,
-                typeof (DummyViewModel).Assembly
+                typeof (LoginViewModel).Assembly
             };
         }
 

@@ -30,7 +30,9 @@ namespace Bootcamp2016.AmazingRace
                 .PerRequest<LeaderViewModel>()
                 .PerRequest<CluesViewModel>()
                 .PerRequest<DetailViewModel>()
-
+                .PerRequest<TabbedViewModel>()
+                .PerRequest<MapViewModel>()
+                .Singleton<ISettingsService, SettingsService>()
                 .Singleton<IAuthenticationService,AuthenticationService>()
                 .Singleton<IDataService, DataService>()
                 .Instance<IMobileServiceClient>(new MobileServiceClient(MobileServicesUri, MobileServicesAppKey))

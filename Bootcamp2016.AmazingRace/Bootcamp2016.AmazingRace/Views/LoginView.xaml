@@ -9,6 +9,10 @@
     </ResourceDictionary>
   </ContentPage.Resources>
   <Grid>
+    <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Center">
+      <Image Source="racelogo.png" />
+    </StackLayout>
+    
       <Button Text="Login"
             HorizontalOptions="Center"
             VerticalOptions="CenterAndExpand"

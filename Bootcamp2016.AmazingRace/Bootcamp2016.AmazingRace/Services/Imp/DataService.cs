@@ -36,7 +36,11 @@ namespace Bootcamp2016.AmazingRace.Services
 
         public async Task<Profile> GetProfileAsync()
         {
+<<<<<<< Updated upstream
             return await _mobileClient.InvokeApiAsync<Profile>("profile", HttpMethod.Get, null);
+=======
+            return new Profile() {  };
+>>>>>>> Stashed changes
         }
 
         public async Task<Race> GetRaceAsync(string id)

@@ -1,17 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Bootcamp2016.AmazingRace.Views.LeaderView">
-
-    <ListView ItemsSource="{Teams}"
+             x:Class="Bootcamp2016.AmazingRace.Views.LeaderView"
+             Title="Leaderboard">
+  <StackLayout VerticalOptions="FillAndExpand">
+    <Button Text="Hello!" />
+    <!--<ListView ItemsSource="{Teams}"
               RefreshCommand="refreshLeaders">
       <ListView.ItemTemplate>
         <DataTemplate>
-          <ImageCell ImageSource="{ADD TEAM LOGO}" 
-                     Text="{ADD TEAM NAME}" 
+          <ImageCell ImageSource="{ADD TEAM LOGO}"
+                     Text="{ADD TEAM NAME}"
                      Detail="{ADD TEAM POINTS}"/>
         </DataTemplate>
       </ListView.ItemTemplate>
-    </ListView>
+    </ListView>-->
+  </StackLayout>
   
 </ContentPage>

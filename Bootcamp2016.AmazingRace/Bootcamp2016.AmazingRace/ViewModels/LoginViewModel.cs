@@ -34,9 +34,34 @@ namespace Bootcamp2016.AmazingRace.ViewModels
 
         async void Login()
         {
-            IsAuthenticated = await _authService.LoginAsync();
-            if (IsAuthenticated)
-                await _navService.NavigateToViewModelAsync<TabbedViewModel>();
+            await _authService.LoginAsync();
+            await _navService.NavigateToViewModelAsync<TabbedViewModel>();
+        }
+
+        async void isLoggedIn()
+        {
+            IsAuthenticated = await _authService.IsLoggedInAsync();
+        }
+
+        protected override void OnInitialize()
+        {
+            base.OnInitialize();
+            isLoggedIn();
+            if (!IsAuthenticated)
+            {
+                Login();
+            }
+            _navService.NavigateToViewModelAsync<TabbedViewModel>();
+        }
+
+        protected override void OnActivate()
+        {
+            base.OnActivate();
+        }
+
+        protected override void OnDeactivate(bool close)
+        {
+            base.OnDeactivate(close);
         }
 
     }

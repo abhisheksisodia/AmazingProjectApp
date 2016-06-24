@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Models\DeviceRegistration.cs" />
     <Compile Include="Services\Imp\DataService.cs" />
     <Compile Include="Services\Imp\SettingsService.cs" />

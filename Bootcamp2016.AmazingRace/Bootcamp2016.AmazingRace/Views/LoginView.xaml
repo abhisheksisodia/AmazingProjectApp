@@ -1,12 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Bootcamp2016.AmazingRace.Views.LoginView">
-  <StackLayout Orientation="Vertical">
-    <Button Text="Login"
-          HorizontalOptions="Center"
-          VerticalOptions="CenterAndExpand"
-          Command="{Binding LoginCommand}"/>
-    <Label Text="Failed to authenticate." IsVisible="{Binding IsAuthenticated}" />
-  </StackLayout>
+             x:Class="Bootcamp2016.AmazingRace.Views.LoginView"
+             xmlns:converters="clr-namespace:Bootcamp2016.AmazingRace.Converters;assembly=Bootcamp2016.AmazingRace">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:InvertBooleanConverter x:Key="InvertBoolConverter" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <Grid>
+      <Button Text="Login"
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand"
+            Command="{Binding LoginCommand}"
+            IsVisible="{Binding Path=IsAuthenticated, Converter={StaticResource InvertBoolConverter}}"
+              />
+    <StackLayout Orientation="Vertical"
+      IsVisible="{Binding IsAuthenticated}">
+          <Entry Text="{Binding TeamName}" />
+          <Button Text="Join Team"
+                  HorizontalOptions="Center"
+                  VerticalOptions="CenterAndExpand"
+                  Command="{Binding JoinCommand}"
+                          />
+    </StackLayout>
+  </Grid>
 </ContentPage>

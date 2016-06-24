@@ -51,6 +51,7 @@ namespace Bootcamp2016.AmazingRace.Services
             string url = string.Format("race/{0}", id);
             return await _mobileClient.InvokeApiAsync<Race>(url, HttpMethod.Get, null);
         }
+        
 
         public async Task<IEnumerable<Race>> GetRacesAsync()
         {

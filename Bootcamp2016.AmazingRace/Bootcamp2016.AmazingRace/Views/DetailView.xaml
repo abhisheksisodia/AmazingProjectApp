@@ -2,6 +2,21 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Bootcamp2016.AmazingRace.Views.DetailView"
+    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              Title="Clues">
-  <Button Text="Detail view.." />
+  <StackLayout Orientation="Vertical">
+    <StackLayout Orientation="Horizontal" >
+      <Label Text="{Binding Path=Points, Mode=OneWay}" />
+      <Label Text="{Binding Path=Description, Mode=OneWay}"/>
+    </StackLayout>
+    <StackLayout Orientation="Horizontal" >
+      <Label Text="{Binding Path=Latitude, Mode=OneWay}" x:Name="Latitude" />
+      <Label Text="{Binding Path=Longitude, Mode=OneWay}" x:Name="Longitude"/>
+    </StackLayout>
+    <maps:Map WidthRequest="320" HeightRequest="200"
+            x:Name="MyMap"
+            IsShowingUser="true"
+            MapType="Street"
+        />
+  </StackLayout>
 </ContentPage>

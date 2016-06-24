@@ -9,20 +9,21 @@
     </ResourceDictionary>
   </ContentPage.Resources>
   <Grid>
-      <Button Text="Login"
+      <ActivityIndicator IsRunning="{Binding IsWaiting}" IsEnabled="{Binding IsWaiting}" />
+      <Button Text="Login" MinimumWidthRequest="200"
             HorizontalOptions="Center"
             VerticalOptions="CenterAndExpand"
             Command="{Binding LoginCommand}"
+            IsEnabled="{Binding Path=IsWaiting, Converter={StaticResource InvertBoolConverter}}"
             IsVisible="{Binding Path=IsAuthenticated, Converter={StaticResource InvertBoolConverter}}"
               />
-    <StackLayout Orientation="Vertical"
+    <StackLayout Orientation="Vertical" MinimumWidthRequest="200"
+                 HorizontalOptions="Center" VerticalOptions="Center"
       IsVisible="{Binding IsAuthenticated}">
           <Entry Text="{Binding TeamName}" />
           <Button Text="Join Team"
-                  HorizontalOptions="Center"
-                  VerticalOptions="CenterAndExpand"
-                  Command="{Binding JoinCommand}"
-                          />
+                  IsEnabled="{Binding Path=IsWaiting, Converter={StaticResource InvertBoolConverter}}"
+                  Command="{Binding JoinCommand}" />
     </StackLayout>
   </Grid>
 </ContentPage>

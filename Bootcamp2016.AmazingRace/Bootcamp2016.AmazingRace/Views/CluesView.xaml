@@ -4,13 +4,15 @@
              x:Class="Bootcamp2016.AmazingRace.Views.CluesView"
              Title="Clues">
   <ListView ItemsSource="{Binding Clues}" SelectedItem="{Binding SelectedClue}" IsPullToRefreshEnabled="True"
-            RefreshCommand="{Binding RefreshCommand}">
+            RefreshCommand="{Binding RefreshCommand}"  IsRefreshing="{Binding IsRefreshing}">
     <ListView.ItemTemplate>
       <DataTemplate>
-        <StackLayout Orientation="Horizontal">
-          <Label Text="{Binding Points}" />
-          <Label Text="{Binding Description}" />
-        </StackLayout>
+        <ViewCell>
+          <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding Points}" />
+            <Label Text="{Binding Description}" />
+          </StackLayout>
+        </ViewCell>
       </DataTemplate>
     </ListView.ItemTemplate>
   </ListView>

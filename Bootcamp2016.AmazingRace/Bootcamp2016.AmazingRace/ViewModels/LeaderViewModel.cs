@@ -1,7 +1,11 @@
 ﻿
 
 using Bootcamp2016.AmazingRace.Models;
+using Bootcamp2016.AmazingRace.Services;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
+using Xamarin.Forms;
+using System.Linq;
 
 namespace Bootcamp2016.AmazingRace.ViewModels
 {
@@ -10,27 +14,38 @@ namespace Bootcamp2016.AmazingRace.ViewModels
     /// </summary>
     public class LeaderViewModel : BaseScreen
     {
-        public ObservableCollection<Team> Teams { get; set; }
-        public LeaderViewModel()
+        private readonly IDataService _dataService;
+        private readonly ISettingsService _settingsService;
+        private bool _isRefreshing;
+        public LeaderViewModel(IDataService dataService,
+                               ISettingsService settingsService)
         {
-            Teams = new ObservableCollection<Team>();
+            _dataService = dataService;
+            _settingsService = settingsService;
+            Teams = new ObservableCollection<TeamData>();
+            RefreshCommand = new Command(RefreshTeams);
         }
 
-        // get race ID
-        // populate listView with ImageCells
-
-        // on pull-to-refresh, make a GET request for teams
-        public void refreshLeaders()
+        public bool IsRefreshing
         {
-
+            get { return _isRefreshing; }
+            set { SetField(ref _isRefreshing, value); }
         }
 
-        // listView.IsPullToRefreshEnabled = true;
-        
-        // ListView exposes a few events that allow you to respond to pull-to-refresh events.
-        //      The RefreshCommand will be invoked and the Refreshing event called.IsRefreshing will be set to true.
-        //      You should perform whatever code is required to refresh the contents of the list view, either in the command or event.
-        //      When refreshing is complete, call EndRefresh or set IsRefreshing to false to tell the list view that you're done.
+        public async void RefreshTeams()
+        {
+            IsRefreshing = true;
+            Teams.Clear();
+            Race race = await _dataService.GetRaceAsync(_settingsService.RaceId);
+            foreach (var team in race.Teams.OrderBy(t => t.Rank))
+            {
+                Teams.Add(team);
+            }
+            IsRefreshing = false;
+        }
+
+        public ICommand RefreshCommand { get; set; }
+        public ObservableCollection<TeamData> Teams { get; set; }
 
     }
 }

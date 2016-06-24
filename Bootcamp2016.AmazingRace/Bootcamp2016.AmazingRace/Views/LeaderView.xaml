@@ -3,6 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Bootcamp2016.AmazingRace.Views.LeaderView"
              Title="Leaderboard">
-
-  
+  <ListView ItemsSource="{Binding Teams}" IsPullToRefreshEnabled="True"
+            RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+            <StackLayout Orientation="Horizontal">
+              <Label Text="{Binding Rank}" />
+              <Label Text="{Binding Name}" />
+              <Label Text="{Binding Points}" />
+            </StackLayout>
+          </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>  
 </ContentPage>

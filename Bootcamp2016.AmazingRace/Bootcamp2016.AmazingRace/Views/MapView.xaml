@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Bootcamp2016.AmazingRace.Views.MapView"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps">
+  <StackLayout Orientation="Vertical">
+    <Label Text="{Binding clueName"></Label>
+    <maps:Map WidthRequest="300" HeightRequest="300"
+              x:Name="ClueMap"
+              IsShowingUser="true"
+              MapType="Street"
+              maps:VisibleRegion="{Binding clueMapSpan}"
+              maps:Pins="{Binding cluePin}"/>
+    <Label Text="{Binding clueDescription}"></Label>
+  </StackLayout>
+</ContentPage>

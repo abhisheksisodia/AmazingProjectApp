@@ -67,14 +67,14 @@
     <Compile Include="Views\DetailView.xaml.cs">
       <DependentUpon>DetailView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\LeaderView.xaml.cs">
+      <DependentUpon>LeaderView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TabbedView.xaml.cs">
       <DependentUpon>TabbedView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CluesView.xaml.cs">
       <DependentUpon>CluesView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\LeaderboardView.xaml.cs">
-      <DependentUpon>LeaderboardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DummyView.xaml.cs">
       <DependentUpon>DummyView.xaml</DependentUpon>
@@ -185,12 +185,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\LeaderboardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Views\TabbedView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -199,6 +193,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Views\CluesView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\LeaderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

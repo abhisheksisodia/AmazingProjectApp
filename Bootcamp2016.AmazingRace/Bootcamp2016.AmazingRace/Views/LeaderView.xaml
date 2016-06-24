@@ -4,15 +4,5 @@
              x:Class="Bootcamp2016.AmazingRace.Views.LeaderView"
              Title="Leaderboard">
 
-    <!--<ListView ItemsSource="{Teams}"
-              RefreshCommand="refreshLeaders">
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ImageCell ImageSource="{ADD TEAM LOGO}" 
-                     Text="{ADD TEAM NAME}" 
-                     Detail="{ADD TEAM POINTS}"/>
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>-->
   
 </ContentPage>

@@ -3,7 +3,5 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="Bootcamp2016.AmazingRace.Views.TabbedView"
             xmlns:local="clr-namespace:Bootcamp2016.AmazingRace.Views;assembly=Bootcamp2016.AmazingRace"
-            ItemTemplate="{Binding TemplateSelector}">
-  <local:LeaderView />
-  <local:CluesView />
+            ItemTemplate="{Binding TemplateSelector}" ItemsSource="{Binding Items}">
 </TabbedPage>

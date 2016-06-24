@@ -1,6 +1,10 @@
 ﻿
 
+using Bootcamp2016.AmazingRace.TemplateSelectors;
 using Caliburn.Micro;
+using System;
+using System.Runtime.CompilerServices;
+using Xamarin.Forms;
 
 namespace Bootcamp2016.AmazingRace.ViewModels
 {
@@ -9,5 +13,13 @@ namespace Bootcamp2016.AmazingRace.ViewModels
     /// </summary>
     public class TabbedViewModel : Conductor<BaseScreen>.Collection.OneActive
     {
+        public TabbedViewModel(CluesViewModel cluesViewModel, LeaderViewModel leaderViewModel)
+        {
+            TemplateSelector = new CaliburnTemplateSelector();
+            Items.Add(cluesViewModel);
+            Items.Add(leaderViewModel);
+        }
+
+        public DataTemplateSelector TemplateSelector { get; set; }        
     }
 }

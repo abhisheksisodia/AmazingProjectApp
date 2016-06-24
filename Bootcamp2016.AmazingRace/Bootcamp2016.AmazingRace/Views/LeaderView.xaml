@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Bootcamp2016.AmazingRace.Views.LeaderView">
+             x:Class="Bootcamp2016.AmazingRace.Views.LeaderView"
+             Title="Leaderboard">
 
-    <ListView ItemsSource="{Teams}"
+    <!--<ListView ItemsSource="{Teams}"
               RefreshCommand="refreshLeaders">
       <ListView.ItemTemplate>
         <DataTemplate>
@@ -12,6 +13,6 @@
                      Detail="{ADD TEAM POINTS}"/>
         </DataTemplate>
       </ListView.ItemTemplate>
-    </ListView>
+    </ListView>-->
   
 </ContentPage>

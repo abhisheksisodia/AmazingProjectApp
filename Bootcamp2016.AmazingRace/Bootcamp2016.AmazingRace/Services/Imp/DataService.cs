@@ -18,13 +18,13 @@ namespace Bootcamp2016.AmazingRace.Services
         }
         public async Task<Clue> GetClueAsync(string clueId)
         {
-            string url = string.Format("/clue/{0}", clueId);
+            string url = string.Format("clue/{0}", clueId);
             return await _mobileClient.InvokeApiAsync<Clue>(url, HttpMethod.Get, null);
         }
 
         public async Task<List<Clue>> GetCluesAsync(string raceId)
         {
-            string url = string.Format("/race/{0}/clues", raceId);
+            string url = string.Format("race/{0}/clues", raceId);
             return await _mobileClient.InvokeApiAsync<List<Clue>>(url, HttpMethod.Get, null);
         }
 

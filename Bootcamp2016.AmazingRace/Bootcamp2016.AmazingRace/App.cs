@@ -27,6 +27,10 @@ namespace Bootcamp2016.AmazingRace
 
             container
                 .PerRequest<LoginViewModel>()
+                .PerRequest<LeaderViewModel>()
+                .PerRequest<CluesViewModel>()
+                .PerRequest<DetailViewModel>()
+
                 .Singleton<IAuthenticationService,AuthenticationService>()
                 .Singleton<IDataService, DataService>()
                 .Instance<IMobileServiceClient>(new MobileServiceClient(MobileServicesUri, MobileServicesAppKey))

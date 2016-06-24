@@ -4,6 +4,6 @@
             x:Class="Bootcamp2016.AmazingRace.Views.TabbedView"
             xmlns:local="clr-namespace:Bootcamp2016.AmazingRace.Views;assembly=Bootcamp2016.AmazingRace"
             ItemTemplate="{Binding TemplateSelector}">
-  <local:LeaderboardView />
+  <local:LeaderView />
   <local:CluesView />
 </TabbedPage>
